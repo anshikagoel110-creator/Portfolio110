@@ -12,9 +12,14 @@ export default defineConfig(({mode}) => {
 }
     },
     resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
-      },
+     import { fileURLToPath } from 'url';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
+...
+
+alias: {
+  '@': path.resolve(__dirname, '.'),
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
